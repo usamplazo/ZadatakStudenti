@@ -1,0 +1,63 @@
+﻿@model StudentiIspitiZadatak.ViewModels.IspitIzmenaViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Izmena ispita</h2>
+
+@using (Html.BeginForm("Edit", "Ispiti"))
+{
+    @Html.AntiForgeryToken()
+    <div class=" control-label">Ispit je prijavio student sa indeksom:  <b>@Html.DisplayFor(modelitem => modelitem.StudentID)</b></div>
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(modelItem => modelItem.Id)
+
+
+        <div class="form-group">
+            <div class=" control-label col-md-2"><b> @Html.DisplayName("Ispitni Rok")</b></div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.IspitniRokID, new SelectList(Model.IspitniRokoviDL, "OznakaRoka", "Naziv"), "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IspitniRokID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class=" control-label col-md-2"><b> @Html.DisplayName("Predmet")</b></div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.PredmetID, new SelectList(Model.PredmetiDL, "Sifra", "Naziv"), "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PredmetID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BodoviRoka, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BodoviRoka, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BodoviRoka, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DatumRoka, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DatumRoka, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DatumRoka, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Nazad", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

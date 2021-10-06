@@ -1,0 +1,64 @@
+﻿@model StudentiIspitiZadatak.ViewModels.IspitIzmenaViewModel
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Obrisi prijavu ispita</h2>
+
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Broj Indeksa")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StudentID)
+        </dd>
+        <dt>
+            @Html.DisplayName("Oznaka Ispitnog Roka")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IspitniRokID)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Sifra Premdmeta")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PredmetID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BodoviRoka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BodoviRoka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumRoka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumRoka)
+        </dd>
+
+       
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Nazad", "Index")
+        </div>
+    }
+</div>

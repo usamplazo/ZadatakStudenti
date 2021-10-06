@@ -1,0 +1,70 @@
+﻿@model IEnumerable<StudentiIspitiZadatak.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Spisak studenata</h2>
+
+<p>
+    @Html.ActionLink("Kreiranje studenta", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BrIndexa)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumRodjenja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MestoRodjenja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumUpisa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.BrIndexa)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Prezime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DatumRodjenja)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MestoRodjenja)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DatumUpisa)
+    </td>
+    <td>
+        @Html.ActionLink("Izmeni", "Edit", new { id = item.BrIndexa }) |
+        @Html.ActionLink("Detalji", "Details", new { id = item.BrIndexa }) |
+        @Html.ActionLink("Obrisi", "Delete", new { id = item.BrIndexa })
+    </td>
+</tr>
+}
+
+</table>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    }
